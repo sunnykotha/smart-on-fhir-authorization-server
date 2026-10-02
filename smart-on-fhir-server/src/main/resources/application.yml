@@ -1,0 +1,20 @@
+﻿spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/smart_fhir?options=-c%20TimeZone%3DAsia%2FKolkata
+    username: smart
+    password: smart
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
