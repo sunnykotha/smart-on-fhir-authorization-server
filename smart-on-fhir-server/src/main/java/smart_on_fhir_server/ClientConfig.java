@@ -38,7 +38,7 @@ public class ClientConfig {
                         AuthorizationGrantType.REFRESH_TOKEN
                 )
                 .redirectUri(
-                        "http://localhost:8080/callback"
+                        "http://localhost:8081/callback"
                 )
                 .scope("openid")
                 .scope("launch")
@@ -69,5 +69,3 @@ public class ClientConfig {
         );
     }
 }
-
-

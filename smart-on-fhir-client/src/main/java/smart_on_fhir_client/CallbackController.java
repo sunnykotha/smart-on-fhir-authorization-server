@@ -148,7 +148,7 @@ public class CallbackController {
                 )
                 + "&scope="
                 + java.net.URLEncoder.encode(
-                        "openid launch/patient launch/encounter offline_access user/*.read",
+                        "openid launch/patient launch/encounter offline_access user/*.read patient/Encounter.rs",
                         StandardCharsets.UTF_8
                 )
                 + "&patient="
@@ -196,7 +196,7 @@ public class CallbackController {
 
                     <p>
                         Requested scopes:
-                        <b>openid launch/patient launch/encounter offline_access user/*.read</b>
+                        <b>openid launch/patient launch/encounter offline_access user/*.read patient/Encounter.rs</b>
                     </p>
 
                     <p>
@@ -332,7 +332,7 @@ public class CallbackController {
                 )
                 + "&scope="
                 + java.net.URLEncoder.encode(
-                        "openid launch/patient launch/encounter offline_access user/*.read",
+                        "openid launch/patient launch/encounter offline_access user/*.read patient/Encounter.rs",
                         StandardCharsets.UTF_8
                 )
                 + "&patient="
@@ -670,7 +670,7 @@ public class CallbackController {
                         <h2>Requested Scope</h2>
 
                         <p>
-                            <b>openid launch/patient launch/encounter offline_access user/*.read</b>
+                            <b>openid launch/patient launch/encounter offline_access user/*.read patient/Encounter.rs</b>
                         </p>
 
                         <h2>Launch Patient</h2>
@@ -882,6 +882,12 @@ public class CallbackController {
                 tokenJson.has("refresh_token")
                 && !tokenJson.get("refresh_token").isNull()
                 && !tokenJson.get("refresh_token").asText().isBlank();
+        if (newAccessToken) {
+            session.setAttribute(
+                    "SMART_ACCESS_TOKEN",
+                    tokenJson.get("access_token").asText()
+            );
+        }
 
         if (newRefreshToken) {
             session.setAttribute(
@@ -970,10 +976,3 @@ public class CallbackController {
                 .replace("'", "&#39;");
     }
 }
-
-
-
-
-
-
-
