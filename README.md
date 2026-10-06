@@ -34,18 +34,25 @@ Spring Boot client used to test the SMART authorization flows against the author
 - `smart-on-fhir-client/client-tree.txt` - client structure documentation
 - `smart-on-fhir-server/server-tree.txt` - server structure documentation
 
-## Running the Server
+## Start the PostgreSQL Server
 
-``text
-http://localhost:8080
-`` 
+cd smart-on-fhir-server
+
+docker compose up -d
+
+`` This starts PostgreSQL 16 in a Docker container.
+
 
 From the server directory:
 
-``powershell
+``
 cd smart-on-fhir-server
 .\mvnw.cmd clean test
 .\mvnw.cmd spring-boot:run
+`` 
+
+``text
+http://localhost:8080
 `` 
 
 ## Running the Client
